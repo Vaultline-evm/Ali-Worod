@@ -1,1 +1,108 @@
+
 # Ali-Worod
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عمر علاقتنا 💕 أنا وورود</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(135deg,#1e1b2e,#2d1b3d 50%,#3d1b2d);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;overflow-x:hidden}
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.heart-bg{position:absolute;color:rgba(255,100,150,.08);font-size:30px;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(100vh) rotate(0) scale(.8);opacity:0}10%,90%{opacity:1}100%{transform:translateY(-100px) rotate(360deg) scale(1.2);opacity:0}}
+.container{position:relative;z-index:1;background:rgba(255,255,255,.05);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,150,180,.3);border-radius:30px;padding:45px 35px;max-width:600px;width:100%;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,.5),0 0 80px rgba(255,100,150,.15);animation:fadeIn 1.2s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.heart-icon{font-size:60px;margin-bottom:10px;display:inline-block;animation:heartbeat 1.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(255,80,120,.8))}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%,42%{transform:scale(1.15)}28%,56%{transform:scale(1)}}
+h1{color:#ffb3d1;font-size:28px;margin-bottom:8px;text-shadow:0 0 20px rgba(255,100,150,.5);font-weight:700}
+.names{color:#ff6b9d;font-size:22px;font-weight:600;margin-bottom:30px;text-shadow:0 0 15px rgba(255,80,130,.6)}
+.names span{color:#ffd1e8}
+.since{color:#b8a9d4;font-size:15px;margin-bottom:35px;letter-spacing:1px}
+.since strong{color:#ffb3d1;font-size:17px}
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:25px}
+.time-card{background:linear-gradient(145deg,rgba(255,100,150,.15),rgba(180,80,200,.1));border:1px solid rgba(255,150,180,.25);border-radius:18px;padding:22px 10px;transition:transform .3s,box-shadow .3s}
+.time-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(255,100,150,.3)}
+.time-number{font-size:38px;font-weight:800;color:#ffd1e8;text-shadow:0 0 15px rgba(255,120,160,.6);line-height:1}
+.time-label{font-size:14px;color:#c9b8e0;margin-top:8px;font-weight:500}
+.total-days-section{background:linear-gradient(145deg,rgba(255,100,150,.12),rgba(180,80,200,.08));border:1px solid rgba(255,150,180,.2);border-radius:18px;padding:20px;margin-bottom:25px;transition:transform .3s}
+.total-days-section:hover{transform:scale(1.02)}
+.total-days-number{font-size:42px;font-weight:800;color:#ff9ec7;text-shadow:0 0 20px rgba(255,100,160,.7);line-height:1.1}
+.total-days-label{font-size:16px;color:#c9b8e0;margin-top:5px}
+.extra-info{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-item{background:rgba(255,255,255,.04);border:1px solid rgba(200,150,220,.15);border-radius:14px;padding:14px 10px}
+.info-value{font-size:22px;font-weight:700;color:#ffb3d1}
+.info-label{font-size:12px;color:#a899c4;margin-top:4px}
+.pulse-dot{display:inline-block;width:8px;height:8px;background:#ff6b9d;border-radius:50%;margin-left:6px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,107,157,.7)}50%{opacity:.7;box-shadow:0 0 0 8px rgba(255,107,157,0)}}
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,107,157,.15);border:1px solid rgba(255,107,157,.3);border-radius:20px;padding:6px 16px;font-size:13px;color:#ffb3d1;margin-bottom:20px}
+@media(max-width:480px){.container{padding:30px 20px;border-radius:22px}h1{font-size:22px}.names{font-size:18px}.time-number{font-size:30px}.total-days-number{font-size:34px}.time-card{padding:16px 6px}.extra-info{gap:8px}.info-value{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="hearts" id="heartsContainer"></div>
+<div class="container">
+<div class="heart-icon">❤️</div>
+<h1>عمر علاقتنا</h1>
+<div class="names">أنا <span>💘</span> ورود</div>
+<div class="since">تعرفنا وحبينا من <strong>27 / 2 / 2022</strong></div>
+<div class="live-badge"><span class="pulse-dot"></span>العدّاد يعمل مباشرة</div>
+<div class="time-grid">
+<div class="time-card"><div class="time-number" id="years">0</div><div class="time-label">سنة</div></div>
+<div class="time-card"><div class="time-number" id="months">0</div><div class="time-label">شهر</div></div>
+<div class="time-card"><div class="time-number" id="days">0</div><div class="time-label">يوم</div></div>
+</div>
+<div class="total-days-section">
+<div class="total-days-number" id="totalDays">0</div>
+<div class="total-days-label">إجمالي الأيام معاً 💕</div>
+</div>
+<div class="extra-info">
+<div class="info-item"><div class="info-value" id="totalHours">0</div><div class="info-label">ساعة من الحب</div></div>
+<div class="info-item"><div class="info-value" id="totalMinutes">0</div><div class="info-label">دقيقة من الحب</div></div>
+<div class="info-item"><div class="info-value" id="totalSeconds">0</div><div class="info-label">ثانية من الحب</div></div>
+<div class="info-item"><div class="info-value" id="totalHeartbeats">0</div><div class="info-label">نبضة قلب ❤️</div></div>
+</div>
+</div>
+<script>
+const startDate=new Date(2022,1,27,0,0,0);
+function createHearts(){
+const c=document.getElementById('heartsContainer'),s=['❤️','💕','💗','💖','🌹','💘'];
+for(let i=0;i<20;i++){
+const h=document.createElement('div');
+h.className='heart-bg';
+h.textContent=s[Math.floor(Math.random()*s.length)];
+h.style.left=Math.random()*100+'%';
+h.style.fontSize=(18+Math.random()*30)+'px';
+h.style.animationDuration=(8+Math.random()*12)+'s';
+h.style.animationDelay=(Math.random()*10)+'s';
+c.appendChild(h);
+}
+}
+function updateCounter(){
+const now=new Date(),diff=now-startDate;
+let years=now.getFullYear()-startDate.getFullYear();
+let months=now.getMonth()-startDate.getMonth();
+let days=now.getDate()-startDate.getDate();
+if(days<0){months--;days+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
+if(months<0){years--;months+=12;}
+const totalDays=Math.floor(diff/864e5);
+const totalHours=Math.floor(diff/36e5);
+const totalMinutes=Math.floor(diff/6e4);
+const totalSeconds=Math.floor(diff/1e3);
+document.getElementById('years').textContent=years;
+document.getElementById('months').textContent=months;
+document.getElementById('days').textContent=days;
+document.getElementById('totalDays').textContent=totalDays.toLocaleString('en-US');
+document.getElementById('totalHours').textContent=totalHours.toLocaleString('en-US');
+document.getElementById('totalMinutes').textContent=totalMinutes.toLocaleString('en-US');
+document.getElementById('totalSeconds').textContent=totalSeconds.toLocaleString('en-US');
+document.getElementById('totalHeartbeats').textContent=Math.floor(totalMinutes*72).toLocaleString('en-US');
+}
+createHearts();
+updateCounter();
+setInterval(updateCounter,1000);
+</script>
+</body>
+</html>
